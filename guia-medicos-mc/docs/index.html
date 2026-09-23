@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Guia de Médicos MC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#FFF7F1;
+  --surface:#FFFFFF;
+  --surface-2:#FFEEDF;
+  --ink:#2B1A0F;
+  --muted:#7B5B46;
+  --line:#F3D9C4;
+  --accent:#E8600A;
+  --accent-strong:#C24E04;
+  --accent-soft:#FFE2CC;
+  --on-accent:#FFFFFF;
+  --hero-1:#F26A0F;
+  --hero-2:#FF9A3C;
+  --hero-ink:#FFFFFF;
+  --quote:#FFF3E8;
+  --shadow:0 1px 2px rgba(120,55,10,.06),0 8px 24px -12px rgba(120,55,10,.18);
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#1A120D;--surface:#241913;--surface-2:#2E2018;--ink:#FBEDE2;--muted:#C9A58C;
+    --line:#3D2A1E;--accent:#FF8B3D;--accent-strong:#FFA565;--accent-soft:#4A2A15;--on-accent:#1A0E06;
+    --hero-1:#B8480A;--hero-2:#E0701F;--hero-ink:#FFF6EE;--quote:#2B1D15;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#1A120D;--surface:#241913;--surface-2:#2E2018;--ink:#FBEDE2;--muted:#C9A58C;
+  --line:#3D2A1E;--accent:#FF8B3D;--accent-strong:#FFA565;--accent-soft:#4A2A15;--on-accent:#1A0E06;
+  --hero-1:#B8480A;--hero-2:#E0701F;--hero-ink:#FFF6EE;--quote:#2B1D15;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--hero-1),var(--hero-2));color:var(--hero-ink);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-140px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.12);pointer-events:none}
+.hero::before{content:"";position:absolute;right:120px;bottom:-180px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.08);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;padding-block:44px 40px;display:grid;gap:18px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.theme-toggle{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:14px;font-weight:600;color:var(--hero-ink);background:rgba(255,255,255,.16);border:0;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5);padding:8px 14px;border-radius:999px;cursor:pointer;transition:background .15s}
+.theme-toggle:hover{background:rgba(255,255,255,.28)}
+.theme-toggle .i-sun{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:inline}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .theme-toggle .i-sun{display:inline}:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}}
+@media (max-width:480px){.theme-toggle .lbl{display:none}.theme-toggle{padding:9px}}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;opacity:.95}
+.brand-mark{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(38px,6.4vw,68px);line-height:1;letter-spacing:-.02em;margin:0;text-wrap:balance;max-width:14ch}
+.hero p.lead{margin:0;max-width:60ch;font-size:clamp(16px,1.9vw,18.5px);opacity:.95}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-light{background:#fff;color:#B84A04}
+.btn-ghost{background:rgba(255,255,255,.16);color:var(--hero-ink);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)}
+.stats{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:10px;font-size:14px}
+.stats b{font-family:var(--display);font-size:28px;font-weight:700;display:block;line-height:1.1;font-variant-numeric:tabular-nums}
+
+/* Toolbar */
+.toolbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:saturate(1.3) blur(10px);-webkit-backdrop-filter:saturate(1.3) blur(10px);border-bottom:1px solid var(--line)}
+.toolbar .wrap{padding-block:14px;display:grid;gap:12px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.search{flex:1 1 280px;position:relative}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.search input,.select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:11px 14px 11px 42px;outline:none;transition:border-color .15s}
+.select{padding-left:14px;width:auto;min-width:170px;appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat;padding-right:36px;cursor:pointer}
+.search input:focus,.select:focus{border-color:var(--accent)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font:inherit;font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;gap:6px;align-items:center;transition:all .15s}
+.chip .n{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:500}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.chip[aria-pressed="true"] .n{color:inherit;opacity:.8}
+.chip:hover{border-color:var(--accent)}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px}
+.result-line{font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--accent-strong);font-weight:600;cursor:pointer}
+
+/* Grid */
+main .wrap{padding-block:26px 40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;align-items:start}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;display:grid;gap:14px;box-shadow:var(--shadow)}
+.card-top{display:flex;gap:14px;align-items:flex-start}
+.avatar{flex:none;width:52px;height:52px;border-radius:50%;background:var(--accent-soft);color:var(--accent-strong);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:19px}
+.spec{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-strong)}
+.card h3{font-family:var(--display);font-weight:700;font-size:21px;line-height:1.2;margin:2px 0 0;text-wrap:balance}
+.sub{font-size:14.5px;color:var(--muted);margin-top:3px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14.5px;color:var(--ink)}
+.meta span{display:inline-flex;align-items:center;gap:6px}
+.meta svg{color:var(--accent)}
+.stars{color:#F59E0B;letter-spacing:1px;font-size:14px}
+.uf{font-weight:700;font-size:12px;background:var(--surface-2);padding:2px 7px;border-radius:6px;letter-spacing:.04em}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--ink)}
+.tag.special{background:var(--accent-soft);color:var(--accent-strong)}
+blockquote{margin:0;background:var(--quote);border-radius:14px;padding:14px 16px 12px;font-size:15px;line-height:1.6;position:relative}
+blockquote .q{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;white-space:pre-line}
+blockquote.open .q{-webkit-line-clamp:unset;display:block}
+blockquote .who{display:block;margin-top:8px;font-size:13px;font-weight:600;color:var(--muted)}
+blockquote .more{margin-top:6px;font-size:13.5px}
+.no-quote{font-size:14px;color:var(--muted);font-style:italic}
+.contact{display:flex;flex-wrap:wrap;gap:8px;border-top:1px dashed var(--line);padding-top:14px}
+.cbtn{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:14px;font-weight:600;padding:8px 13px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none;font-variant-numeric:tabular-nums;transition:all .15s}
+.cbtn:hover{border-color:var(--accent);color:var(--accent-strong)}
+.cbtn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.cbtn.primary:hover{background:var(--accent-strong);border-color:var(--accent-strong);color:var(--on-accent)}
+.phone-text{user-select:all}
+.empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty strong{display:block;font-family:var(--display);font-size:22px;color:var(--ink);margin-bottom:6px}
+
+/* Info sections */
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:44px}
+.panel{border-radius:18px;padding:24px;display:grid;gap:10px;align-content:start}
+.panel h2{font-family:var(--display);font-size:24px;line-height:1.15;margin:0;text-wrap:balance}
+.panel p{margin:0;font-size:15.5px}
+.panel.cta{background:var(--accent);color:var(--on-accent)}
+.panel.cta .btn{justify-self:start;margin-top:6px;background:var(--on-accent);color:var(--accent-strong)}
+.panel.plain{background:var(--surface-2)}
+.panel.plain .btn{justify-self:start;margin-top:6px;background:var(--accent);color:var(--on-accent)}
+.disclaimer{margin-top:18px;border:1.5px solid var(--line);border-radius:18px;padding:22px 24px;font-size:14.5px;color:var(--muted);display:grid;gap:8px}
+.disclaimer h2{font-family:var(--display);font-size:18px;color:var(--ink);margin:0}
+.disclaimer p{margin:0;max-width:80ch}
+.email{font-weight:700;color:var(--accent-strong);user-select:all}
+footer{padding-block:28px 40px;text-align:center;font-size:13.5px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:all .2s;z-index:50}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<script>
+try{var t=localStorage.getItem("mc-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}
+</script>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar"><div class="brand"><span class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6a5.3 5.3 0 0 1 9.3 6c-2.3 4.6-9.3 9-9.3 9z"/></svg></span>Comunidade Múltiplas Crônicas</div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar modo claro/escuro"><svg class="i-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="lbl" id="themeLabel">Modo escuro</span></button></div>
+    <h1>Guia de Médicos feito por pacientes</h1>
+    <p class="lead">Um guia vivo, construído a partir de experiências reais da comunidade. Aqui estão profissionais com um olhar mais humano para quem vive com doenças crônicas, indicados por quem foi atendido por eles.</p>
+    <div class="hero-actions">
+      <a class="btn btn-light" href="#guia">Ver profissionais</a>
+      <a class="btn btn-ghost" href="https://forms.gle/4fLPzjBAJaPbFK838" target="_blank" rel="noopener">Indicar um profissional</a>
+    </div>
+    <div class="stats" id="stats"></div>
+  </div>
+</header>
+
+<div class="toolbar" id="guia">
+  <div class="wrap">
+    <div class="row">
+      <label class="search" for="q">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Buscar por nome, cidade ou condição (ex: EM, lúpus)" autocomplete="off" aria-label="Buscar">
+      </label>
+      <select class="select" id="uf" aria-label="Filtrar por estado"></select>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Filtrar por especialidade"></div>
+    <div class="result-line"><span id="count"></span><button class="linkbtn" id="clear" hidden>Limpar filtros</button></div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden><strong>Nenhum profissional encontrado</strong>Tente outro termo de busca ou remova algum filtro.</div>
+
+    <section class="info">
+      <div class="panel cta">
+        <h2>Conhece um especialista que realmente faz a diferença?</h2>
+        <p>Este guia só cresce quando você compartilha a sua experiência. Se um profissional te escutou de verdade, respeitou sua vivência e teve um olhar humano para a sua condição, indique. Sua indicação pode ser exatamente o que outra pessoa crônica está precisando.</p>
+        <a class="btn" href="https://forms.gle/4fLPzjBAJaPbFK838" target="_blank" rel="noopener">Indicar um profissional</a>
+      </div>
+      <div class="panel plain">
+        <h2>Benefícios e descontos exclusivos</h2>
+        <p>Membros da Comunidade Múltiplas Crônicas têm acesso a condições especiais com profissionais deste guia.</p>
+        <a class="btn" href="https://forms.gle/Jq5rtTCt3sPmA3Mg6" target="_blank" rel="noopener">Fazer parte da comunidade</a>
+      </div>
+    </section>
+
+    <section class="disclaimer">
+      <h2>Antes de usar este guia</h2>
+      <p>As indicações refletem opiniões pessoais de pacientes e passam por uma curadoria do Múltiplas Crônicas antes de serem publicadas. Consideramos a consistência do relato, a experiência descrita e a reputação do profissional, e nem todas as sugestões são incluídas.</p>
+      <p>Cada jornada é única. O Múltiplas Crônicas não se responsabiliza pelo atendimento dos profissionais listados nem por decisões tomadas com base neste guia. Ao utilizá-lo, você declara estar ciente dessas condições.</p>
+      <p>É um dos profissionais indicados e prefere não ter suas informações divulgadas? Escreva para <span class="email">multiplascronicas@gmail.com</span>.</p>
+    </section>
+  </div>
+</main>
+<footer>Guia de Médicos · Comunidade Múltiplas Crônicas</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="medicos.js"></script>
+<script>
+const DATA=window.MEDICOS;
+
+const UF_NAMES={BA:"Bahia",MG:"Minas Gerais",RJ:"Rio de Janeiro",RS:"Rio Grande do Sul",SC:"Santa Catarina",SP:"São Paulo"};
+const TAG_LABEL={"escuta ativa":"Escuta ativa","explica com clareza":"Explica com clareza","respeito":"Respeito","muito conhecimento":"Muito conhecimento","sempre atualizado":"Sempre atualizado","segurança":"Segurança","decisões compartilhadas":"Decisões compartilhadas","acessível":"Acessível","não tem pressa":"Não tem pressa","tem doença crônica":"Também tem doença crônica"};
+const SPECIAL=new Set(["não tem pressa","tem doença crônica"]);
+
+const norm=s=>(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const sortKey=n=>norm(n.replace(/^(dra?\.?)\s+/i,""));
+DATA.forEach(d=>{
+  d.tags=d.d.split(",").map(t=>t.trim().toLowerCase()).filter(Boolean);
+  d.hay=norm([d.n,d.e,d.s,d.c,d.uf,UF_NAMES[d.uf],d.dep,d.s.includes("Esclerose Múltipla")?"em":""].join(" "));
+});
+DATA.sort((a,b)=>sortKey(a.n).localeCompare(sortKey(b.n),"pt"));
+
+const state={q:"",spec:"Todas",uf:""};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// stats
+const specs=[...new Set(DATA.map(d=>d.e))];
+const ufs=[...new Set(DATA.map(d=>d.uf))].sort();
+const withDep=DATA.filter(d=>d.dep).length;
+$("stats").innerHTML=`<div><b>${DATA.length}</b>profissionais</div><div><b>${ufs.length}</b>estados</div><div><b>${specs.length}</b>especialidades</div><div><b>${withDep}</b>depoimentos</div>`;
+
+// chips
+const specCounts=specs.map(s=>[s,DATA.filter(d=>d.e===s).length]).sort((a,b)=>b[1]-a[1]);
+$("chips").innerHTML=[["Todas",DATA.length],...specCounts].map(([s,n])=>`<button class="chip" data-spec="${esc(s)}" aria-pressed="${s==="Todas"}">${esc(s)} <span class="n">${n}</span></button>`).join("");
+$("chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;state.spec=b.dataset.spec;render();});
+
+// uf select
+$("uf").innerHTML=`<option value="">Todos os estados</option>`+ufs.map(u=>`<option value="${u}">${u} · ${UF_NAMES[u]||u}</option>`).join("");
+$("uf").addEventListener("change",e=>{state.uf=e.target.value;render();});
+$("q").addEventListener("input",e=>{state.q=e.target.value;render();});
+$("clear").addEventListener("click",()=>{state.q="";state.spec="Todas";state.uf="";$("q").value="";$("uf").value="";render();});
+
+const ICON={
+  pin:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+  phone:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
+  copy:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
+  ig:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>'
+};
+const initials=n=>{const p=n.replace(/^(dra?\.?)\s+/i,"").split(/\s+/).filter(w=>w.length>2||/^[A-ZÁ-Ú]/.test(w));return (p[0][0]+(p.length>1?p[p.length-1][0]:"")).toUpperCase();};
+
+function card(d){
+  const phones=d.t.split("|").map(s=>s.trim()).filter(Boolean);
+  const tags=d.tags.map(t=>`<span class="tag${SPECIAL.has(t)?" special":""}">${esc(TAG_LABEL[t]||t)}</span>`).join("");
+  const quote=d.dep?`<blockquote><div class="q">${esc(d.dep)}</div>${d.dep.length>220?'<button class="linkbtn more">Ler depoimento completo</button>':""}<span class="who">${d.p?"Paciente: "+esc(d.p):"Relato de paciente"}</span></blockquote>`:`<div class="no-quote">Indicado pela comunidade, ainda sem depoimento escrito.</div>`;
+  const phoneBtns=phones.map((p,i)=>`<a class="cbtn${i===0?" primary":""}" href="tel:+55${p.replace(/\D/g,"")}">${ICON.phone}<span class="phone-text">${esc(p)}</span></a><button class="cbtn copy" data-copy="${esc(p)}" aria-label="Copiar telefone ${esc(p)}" title="Copiar telefone">${ICON.copy}</button>`).join("");
+  const ig=d.ig?`<a class="cbtn" href="${esc(d.ig)}" target="_blank" rel="noopener">${ICON.ig}Instagram</a>`:"";
+  return `<article class="card">
+    <div class="card-top"><div class="avatar" aria-hidden="true">${initials(d.n)}</div>
+      <div><div class="spec">${esc(d.e)}</div><h3>${esc(d.n)}</h3>${d.s?`<div class="sub">${esc(d.s)}</div>`:""}</div></div>
+    <div class="meta"><span>${ICON.pin}${esc(d.c)} <span class="uf">${d.uf}</span></span><span class="stars" aria-label="Avaliação 5 de 5">★★★★★</span></div>
+    <div class="tags">${tags}</div>
+    ${quote}
+    <div class="contact">${phoneBtns}${ig}</div>
+  </article>`;
+}
+
+function render(){
+  const q=norm(state.q.trim());
+  const list=DATA.filter(d=>(state.spec==="Todas"||d.e===state.spec)&&(!state.uf||d.uf===state.uf)&&(!q||q.split(/\s+/).every(w=>d.hay.includes(w))));
+  $("grid").innerHTML=list.map(card).join("");
+  $("empty").hidden=list.length>0;
+  $("count").textContent=list.length===DATA.length?`Mostrando todos os ${DATA.length} profissionais`:`${list.length} de ${DATA.length} profissionais`;
+  $("clear").hidden=!(state.q||state.spec!=="Todas"||state.uf);
+  document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.spec===state.spec));
+}
+
+let tt;
+function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),1800);}
+$("grid").addEventListener("click",e=>{
+  const m=e.target.closest(".more");
+  if(m){const bq=m.closest("blockquote");const o=bq.classList.toggle("open");m.textContent=o?"Mostrar menos":"Ler depoimento completo";return;}
+  const c=e.target.closest(".copy");
+  if(c){const v=c.dataset.copy;
+    const done=()=>toast("Telefone copiado");
+    try{navigator.clipboard.writeText(v).then(done,()=>fallback(c));}catch(_){fallback(c);}
+  }
+});
+function fallback(btn){const s=btn.previousElementSibling.querySelector(".phone-text");const r=document.createRange();r.selectNodeContents(s);const sel=getSelection();sel.removeAllRanges();sel.addRange(r);toast("Número selecionado, copie com Ctrl+C");}
+// modo claro/escuro
+(function(){
+  const root=document.documentElement, mq=matchMedia("(prefers-color-scheme: dark)");
+  const isDark=()=>root.getAttribute("data-theme")?root.getAttribute("data-theme")==="dark":mq.matches;
+  const sync=()=>{const d=isDark();$("themeLabel").textContent=d?"Modo claro":"Modo escuro";$("themeToggle").setAttribute("aria-pressed",d);};
+  $("themeToggle").addEventListener("click",()=>{const next=isDark()?"light":"dark";root.setAttribute("data-theme",next);try{localStorage.setItem("mc-theme",next);}catch(e){}sync();});
+  mq.addEventListener&&mq.addEventListener("change",sync);
+  sync();
+})();
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "guia-medicos-mc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Guia de Médicos da comunidade Múltiplas Crônicas",
+  "scripts": { "start": "node server.js" }
+}
